@@ -1,5 +1,7 @@
 .flexible-modal {
   position: absolute;
+  right: 0;
+  bottom: 0;
   z-index: 1;
   border: 1px solid #ccc;
   background: white;
@@ -32,7 +34,7 @@
 .flexible-modal-mask {
   position: fixed;
   height: 100%;
-  background: rgba(55, 55, 55, 0.6);
+  /* background: rgba(55, 55, 55, 0.6); */
   top:0;
   left:0;
   right:0;
