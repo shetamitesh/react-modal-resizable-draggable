@@ -4,8 +4,8 @@ interface PropTypes {
     className: string;
     width: number;
     height: number;
-    top: number;
-    left: number;
+    bottom: number;
+    right: number;
     isDragging: boolean;
     isOpen: boolean;
     isMinimised: boolean;

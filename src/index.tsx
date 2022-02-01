@@ -5,8 +5,8 @@ import Resizer from './resize';
 import Modal from './model';
 
 interface PropTypes {
-	top?: number;
-	left?: number;
+	bottom?: number;
+	right?: number;
 	initHeight?: number;
 	initWidth?: number;
 	minWidth?: number;
@@ -31,8 +31,8 @@ interface PropTypes {
 interface StateTypes {
 	width: number;
 	height: number;
-	top: number;
-	left: number;
+	bottom: number;
+	right: number;
 	rel?: {
 		x: number;
 		y: number;
@@ -52,19 +52,15 @@ class FlexibleModal extends Component<PropTypes, StateTypes> {
 		this.state = {
 			isDragging: false,
 			isResizing: false,
-			top:
-				this.props.top !== undefined
-					? this.props.top
-					: this.props.initHeight
-						? window.innerHeight / 2 - this.props.initHeight / 2 - 50
-						: window.innerHeight / 2 - 400 / 2 - 50,
-			left:
-				this.props.left !== undefined
-					? this.props.left
-					: this.props.initWidth
-						? window.innerWidth / 2 - this.props.initWidth / 2 - 21
-						: window.innerWidth / 2 - 800 / 2 - 21,
-			width: this.props.initWidth ? this.props.initWidth : 800,
+			bottom:
+				this.props.bottom !== undefined
+					? this.props.bottom
+					: 0,
+			right:
+				this.props.right !== undefined
+					? this.props.right
+					: 0,
+			width: this.props.initWidth ? this.props.initWidth : 400,
 			height: this.props.initHeight ? this.props.initHeight : 400,
 		};
 		this.updateStateResizing = this.updateStateResizing.bind(this);
@@ -127,16 +123,16 @@ class FlexibleModal extends Component<PropTypes, StateTypes> {
 			} else if (disableVerticalMove && disableHorizontalMove) {
 			} else if (!disableVerticalMove && disableHorizontalMove) {
 				this.setState({
-					top: e.pageY - rel.y
+					bottom: 0
 				});
 			} else if (disableVerticalMove && !disableHorizontalMove) {
 				this.setState({
-					left: e.pageX - rel.x
+					right: 0
 				});
 			} else if (!disableVerticalMove && !disableHorizontalMove) {
 				this.setState({
-					left: e.pageX - rel.x,
-					top: e.pageY - rel.y
+					right: 0,
+					bottom: 0
 				});
 			}
 		} else if (this.state.isResizing) {
@@ -195,18 +191,18 @@ class FlexibleModal extends Component<PropTypes, StateTypes> {
 				case 37:
 					!disableMove &&
 						!disableHorizontalMove &&
-						this.setState((prevState) => ({ left: prevState.left - 20 }));
+						this.setState((prevState) => ({ right: prevState.right - 20 }));
 					break;
 				case 38:
-					!disableMove && !disableVerticalMove && this.setState((prevState) => ({ top: prevState.top - 20 }));
+					!disableMove && !disableVerticalMove && this.setState((prevState) => ({ bottom: prevState.bottom - 20 }));
 					break;
 				case 39:
 					!disableMove &&
 						!disableHorizontalMove &&
-						this.setState((prevState) => ({ left: prevState.left + 20 }));
+						this.setState((prevState) => ({ right: prevState.right + 20 }));
 					break;
 				case 40:
-					!disableMove && !disableVerticalMove && this.setState((prevState) => ({ top: prevState.top + 20 }));
+					!disableMove && !disableVerticalMove && this.setState((prevState) => ({ bottom: prevState.bottom + 20 }));
 					break;
 			}
 		}
@@ -235,8 +231,8 @@ class FlexibleModal extends Component<PropTypes, StateTypes> {
 					onFocus={onFocus}
 					width={this.state.width}
 					height={this.state.height}
-					top={this.state.top}
-					left={this.state.left}
+					bottom={this.state.bottom}
+					right={this.state.right}
 					isDragging={this.state.isDragging}
 					onRequestRecover={onRequestRecover}
 					isMinimised={isMinimised}

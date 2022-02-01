@@ -2,8 +2,8 @@ import { Component } from 'react';
 import './index.css';
 import Modal from './model';
 interface PropTypes {
-    top?: number;
-    left?: number;
+    bottom?: number;
+    right?: number;
     initHeight?: number;
     initWidth?: number;
     minWidth?: number;
@@ -26,8 +26,8 @@ interface PropTypes {
 interface StateTypes {
     width: number;
     height: number;
-    top: number;
-    left: number;
+    bottom: number;
+    right: number;
     rel?: {
         x: number;
         y: number;

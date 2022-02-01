@@ -7,8 +7,8 @@ interface PropTypes {
     className: string;
     width: number;
     height: number;
-    top: number;
-    left: number;
+    bottom: number;
+    right: number;
     isDragging: boolean;
     isOpen: boolean;
     isMinimised: boolean;
@@ -19,7 +19,7 @@ interface PropTypes {
 export default class Modal extends Component<PropTypes> {
     node?: HTMLDivElement | null;
     render() {
-        const { isDragging, width, height, top, left, isOpen, isMinimised, onRequestRecover, className, onFocus } = this.props;
+        const { isDragging, width, height, bottom, right, isOpen, isMinimised, onRequestRecover, className, onFocus } = this.props;
         if (isOpen) {
             return (
                 <Fragment>
@@ -31,7 +31,7 @@ export default class Modal extends Component<PropTypes> {
                             }}
                             draggable={isDragging}
                             className={!className ? "flexible-modal" : "flexible-modal " + className}
-                            style={{ width, height, top, left }}
+                            style={{ width, height, bottom, right }}
                         >
                             {this.props.children}
                         </div>
