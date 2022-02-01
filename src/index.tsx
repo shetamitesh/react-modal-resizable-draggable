@@ -56,13 +56,13 @@ class FlexibleModal extends Component<PropTypes, StateTypes> {
 				this.props.top !== undefined
 					? this.props.top
 					: this.props.initHeight
-						? window.innerHeight - this.props.initHeight - 50
-						: window.innerHeight - 450,
+						? window.innerHeight - this.props.initHeight - 20
+						: window.innerHeight - 420,
 			left:
 				this.props.left !== undefined
 					? this.props.left
 					: this.props.initWidth
-						? window.innerWidth - this.props.initWidth - 21
+						? window.innerWidth - this.props.initWidth - 20
 						: window.innerWidth - 420,
 			width: this.props.initWidth ? this.props.initWidth : 800,
 			height: this.props.initHeight ? this.props.initHeight : 400,
@@ -223,13 +223,13 @@ class FlexibleModal extends Component<PropTypes, StateTypes> {
 		return (
 			<div>
 				{/*this mask is a must*/}
-				{isOpen &&
+				{/* {isOpen &&
 					!isMinimised && (
 						<div
 							onClick={onRequestMinimise ? onRequestMinimise : onRequestClose}
 							className="flexible-modal-mask"
 						/>
-					)}
+					)} */}
 				<Modal
 					className={className}
 					onFocus={onFocus}
