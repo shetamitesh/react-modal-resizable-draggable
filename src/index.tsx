@@ -123,16 +123,16 @@ class FlexibleModal extends Component<PropTypes, StateTypes> {
 			} else if (disableVerticalMove && disableHorizontalMove) {
 			} else if (!disableVerticalMove && disableHorizontalMove) {
 				this.setState({
-					bottom: 0
+					bottom: e.pageY - rel.y
 				});
 			} else if (disableVerticalMove && !disableHorizontalMove) {
 				this.setState({
-					right: 0
+					right: e.pageX - rel.x
 				});
 			} else if (!disableVerticalMove && !disableHorizontalMove) {
 				this.setState({
-					right: 0,
-					bottom: 0
+					right: e.pageX - rel.x,
+					bottom: e.pageY - rel.y
 				});
 			}
 		} else if (this.state.isResizing) {
