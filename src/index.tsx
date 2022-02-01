@@ -55,11 +55,15 @@ class FlexibleModal extends Component<PropTypes, StateTypes> {
 			bottom:
 				this.props.bottom !== undefined
 					? this.props.bottom
-					: 0,
+					: this.props.initHeight
+						? window.innerHeight - 50
+						: (window.innerHeight / 2 - (400 / 2)) - 50,
 			right:
 				this.props.right !== undefined
 					? this.props.right
-					: 0,
+					: this.props.initWidth
+						? window.innerWidth - 50
+						: (window.innerWidth / 2 - (400 / 2)) - 50,
 			width: this.props.initWidth ? this.props.initWidth : 400,
 			height: this.props.initHeight ? this.props.initHeight : 400,
 		};
